@@ -1,0 +1,173 @@
+WordGuesser - Analysis
+
+Contents
+    Introduction and General Game Play
+    Display Steps
+        Intro Display
+        Game Start and Turn Display
+        Sage Form
+        Your Guess Form
+        Magic Guess Form
+        Word Guess Form
+    Schedule
+
+<h1>Introduction and General Game Play
+
+    A game for one player, attempting to guess a word or phrase
+    by selecting letters that might be present.
+
+    The player begins with a pot of 200 tokens.
+
+    The player is presented with a word or phrase and makes a stake
+    from his bank into the pot for guessing the word.
+
+    The payout odds begin high say 100:1 for guessing the word
+    without any letters exposed.
+
+    If the player cannot guess the word then he can bid an amount
+    on a letter that might be present. He can do this in one of three
+    ways:
+        Pay the sage to guess a letter - minimum bid 40
+        Guess a letter outright - minimum bid 10
+        Use the automatic letter selector - minimum bid 5
+
+    If the letter is not present then the amount is lost. Otherwise
+    it is added to the pot for guessing the word. The letters of the
+    word are then exposed. And the payout odds reduced accordingly.
+    (A formula based on the word length and letters exposed is used
+    to set the new odds).
+
+    If the player then attempts to guess the word, but gets it wrong,
+    the pot is lost but play continues until only two letters are left
+    unguessed, at which point only the word guess option appears.
+    
+    If the word guess is then incorrect the pot is lost and the user
+    is given the option to select another word or phrase.
+
+    If the player correctly guesses the word then the word is revealed
+    and the player is payed the pot times the current odds.
+
+    The process is then repeated until the player runs out of money or
+    reaches the target banked amount (probably 5000 tokens).
+
+<h1>Display Steps
+    The display is fixed at 360 pixels wide/centred to suit mobile 
+    screens.
+
+<h2>Intro Display
+    The game introduction appears when the game is first loaded
+    or when the Intro menu option is selected.
+
+    The Intro appears before the rest of the game HTML, apart
+    from the menu. It explains the general features of the game
+    for the user.
+
+    The Intro includes a Dismiss button, which clears it from
+    the display (and begins the game if it is not already started)
+
+<h2>Game Start and Turn Display
+    At the start of each word turn, a word or phrase is selected
+    from the dictionary. The empty squares for the
+    letters to guess are displayed (pale red on grey background)
+    as table rows of up to 14 characters. Where the letters to guess
+    are in a phrase (1 in 3) the words are split onto upto 4 rows (lines),
+    There is a maximum of 14 character words on one line, one character
+    less for the number of words on a row - 1. Table rows are centred in 
+    the row div.
+
+    Once the word(s) spaces are displayed. 
+    The following details are displayed:
+    Bank: nnn..     
+    Pot: 0
+    Word Guess Odds: n:m
+ 
+    And the player is invited to make his first stake at guessing the 
+    word or phrase.
+
+    Once the stake is in the pot, the options are displayed,
+    these are listed as option buttons as follows:
+
+    Guess a letter
+    1. Pay the Sage (min. bid 40)
+    2. Your Guess (min. bid 10)
+    3. Use Magic Selector (min. bid 5)
+    4. Guess the Word
+
+    
+    Once an option button is clicked, the options are cleared from
+    the display and the details for the option displayed.
+
+<h2>Sage Form
+    The sage form has an image of a monocled character on the left
+    with a bid amount field on the right and a submit button.
+
+    When the submit button is entered with the amount present,
+    The sages letter appears at lower right. There is a brief timeout
+    before the result of the guess is displayed. The bank is 
+    diminished by the amount of the bid.
+
+    If the letter guessed appears in the word or phrase, all the 
+    corresponding letters in the display are revealed. The pot is
+    increased by the amount of the bid and a status message displayed.
+
+    Play then continues to the next guess with the options being
+    re-presented (after a timeout). If only two (different) letters remain 
+    to be guessed, only the option to guess the word appears.
+
+    If the guess is incorrect, a status message appears.
+
+<h2>Your Guess Form
+    The Your Guess form has an image of a head with an exclamation
+    mark on the left. On the right is an input for one character, the bid
+    amount and a submit button.
+
+    Allowance should be made for a letter that already appears.
+
+    The procedures for correct and incorrect guesses are as for the sage.
+    
+
+<h2>Magic Guess Form
+    An image of a hand and wand appears on the left. On the right appears
+    a prompt for a bid amount and a submit button. 
+
+    Once the bid has been collected, the bid amount is cleared from the
+    display and a "Click to Accept" prompt appears above a time-out display
+    of a random letter that repeats for upto 8 attempts.
+
+    The letters are selected at random from those not already displayed.
+
+    If the 8 attempts are used-up, the final choice is taken as the guess.
+    Otherwise the clicked choice is taken.
+
+    The procedures for correct and incorrect guesses are as for the sage.
+
+<h2>Word Guess Form
+    This has an image of an old dictionary on the left with a hand
+    pointing to a word. On the right appears a prompt to enter a word
+    or phrase at the input field.
+
+    If the word guessed is incorrect a status message is displayed and
+    the pot is set to zero.
+
+    Otherwise the player is congratulated and the odds are multiplied
+    by the pot and paid to the player's bank.
+
+    If the player has reached the target in his bank (5000) then he is
+    congratulated and offered to start a new game.
+ 
+
+<h1>Schedule
+    Item                       | Est Time (days)   |  Actual |
+    ---------------------------|-------------------|---------|
+    Extract Word List          |                60 |         |
+    Do Phrase List             |                 5 |         |
+    Analysis                   |                 5 |         |
+    HTML                       |                 3 |         |
+    CSS                        |                 2 |         |
+    Code                       |                15 |         |
+    ---------------------------|-------------------|---------|
+
+
+
+
+

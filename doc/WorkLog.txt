@@ -1,0 +1,30 @@
+WordGuesser - Work Log
+
+Contents
+    Jobs Due
+    Jobs Done
+
+Jobs Due
+
+    Set-up git
+    
+    Do Analysis
+
+    Do Initial HTML/CSS
+
+    Set-up the game flow logic (game.js)
+
+    Move the words and phrase functions to wordFuncs.js
+
+    * Do temp wordList
+    
+    * Do temp phraseList
+
+    * Collect start word / phrase
+
+    * Do phrase blank display
+
+    Display the Bank and Pot and Odds etc.
+
+    Do the initial word bid
+    

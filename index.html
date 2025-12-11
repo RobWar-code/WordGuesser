@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width:display-width, initial-scale:1">
+    <title>WordGuesser</title>
+    <meta name="description" content="A stake and word guess game">
+    <meta name="author" content="Robin Warner">
+    <meta name="keywords" content="word game">
+    <link rel="stylesheet" href="src/styles/styles.css">
+</head>
+<body>
+    <!-- Menu -->
+    <table id="menuTable">
+        <tr id="menuRow">
+            <td id="menuLogoCell">
+                <img src="assets/images/mainLogo.png" width="64" height="32">
+            </td>
+            <td id="menuTitleCell">WordGuesser</td>
+            <td id="menuOptionsCell">
+                <button class="textButton" id="introBtn">Intro</button>
+                <button class="textButton" id="homeBtn">Home</button>
+            </td>
+        </tr>
+    </table>
+
+    <div id="introDiv">
+        <h3>Introduction</h3>
+        <p>
+            Welcome to WordGuesser the stake and guess game for guessing
+            words.
+        </p>
+        <p>
+            The aim of the game is to bet on your correct guesses at hidden
+            words or phrases and the letters within them to try to reach
+            the maximum bank of 5000 tokens.
+        </p>
+        <p>
+            The options for guessing a letter or guessing the word or phrase
+            are presented on the display. You have to make an initial word
+            guess stake and then make an additional bid(s) for letters.
+
+            The more letters that you reveal the lower the payout odds 
+            before you guess the word or phrase.
+        </p>
+        <button class="textButton" id="introDismiss">Dismiss</button>
+    </div>
+
+    <div id="gameContentDiv">
+        <div class="row" id="wordsDiv">
+            <div class="col" id="wordsPanel">
+
+            </div>
+        </div>
+        <div class="row displayRow" id="initialBidDiv">
+            <div class="col panel" id="initialBidPanel">
+                <p class="statusText">Enter your bid for the word</p>
+                <label for="initialBid">Bid Amount: </label>
+                <input type="number" name="initialBid" id="initialBid">
+                <button class="textButton" id="initialBidSubmit">Submit</button>
+            </div>
+        </div>
+
+        <div class="row displayRow" id="mainOptionsDiv">
+            <div class="col panel" id="mainOptionPanel">
+                <p class="statusText">Click on option to bid for a letter or the word</p>
+                <button class="textButton" id="sageOpt">Pay Sage for Letter (min bid 40)</button><br>
+                <button class="textButton" id="playerOpt">You Guess a Letter (min bid 10)</button><br>
+                <button class="textButton" id="selectorOpt">Use the Magic Selector (min bid 5)</button><br>
+                <button class="textButton" id="guessWordOpt">Guess Word</button>
+            </div>
+        </div>
+
+        <div class="row displayRow" id="sageDiv">
+            <div class="col halfPanel">
+                <img src="assets/images/sage01.png" alt="Sage" width="100%" height="auto">
+            </div>
+            <div class="col halfPanel">
+                <label for="sageBid">Your Bid: </label>
+                <input type="number" name="sageBid" id="sageBid">
+                <button class="textButton" id="sageSubmit">Submit</button>
+                <div id="sageChoiceDiv">
+                    <p>Sage's Choice: <span id="sageLetter"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row displayRow" id="playerGuessDiv">
+            <div class="col halfPanel">
+                <img src="assets/images/playerGuess.png" alt="Player Guess" width="100%" height="auto">
+            </div>
+            <div class="col halfPanel">
+                <p class="statusText">Enter Your Letter Guess</p>
+                <input type="text" id="playerGuessLetter">
+                <p class="statusText">Enter Your Bid</p>
+                <input type="number" id="playerGuessBid">
+                <button class="textButton" id="playerGuessBid">Submit</button>
+            </div>
+        </div>
+
+        <div class="row displayRow" id="statusDiv">
+            <div class="col panel" id="statusPanel">
+                <p class="statusText" id="statusPara"></p>
+            </div>
+        </div>
+
+        <div id="moneyDiv">
+            <p><b>Bank:</b> <span id="bankAmount"></span> <b>Pot: </b><span id="potAmount"></span></p>
+            <p><b>Word Guess Odds: </b><span id="odds"></span></p>
+        </div>
+    </div>
+
+<script src="src/game.js"></script>
+<script src="src/phraseList.js"></script>
+<script src="src/wordList.js"></script>
+<script src="src/wordFuncs.js"></script>
+
+<script>
+    let gameStarted = false;
+    const introDismiss = document.getElementById("introDismiss");
+    const initialBidSubmit = document.getElementById("initialBidSubmit");
+    const sageOpt = document.getElementById("sageOpt");
+    const sageSubmit = document.getElementById("sageSubmit");
+    const playerOpt = document.getElementById("playerOpt");
+
+    introDismiss.addEventListener("click", (e) => {
+        document.getElementById("introDiv").style.display = "none";
+        document.getElementById("gameContentDiv").style.display = "block";
+
+        if (!gameStarted) {
+            gameStarted = true;
+            game.initialise();
+            game.startWord();
+        }
+    });
+
+    initialBidSubmit.addEventListener("click", (e) => {
+        game.doInitialBid();
+    });
+
+    // Main Options
+    sageOpt.addEventListener("click", (e) => {
+        game.doSageOpt();
+    });
+
+    sageSubmit.addEventListener("click", (e) => {
+        game.doSageBid();
+    });
+
+    playerOpt.addEventListener("click", (e) => {
+        game.doPlayerLetterGuessOpt();
+    });
+
+</script>
+</body>
+</html>

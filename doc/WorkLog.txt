@@ -6,15 +6,33 @@ Contents
 
 Jobs Due
 
-    Set-up git
-    
     Do Analysis
-
-    Do Initial HTML/CSS
 
     Set-up the game flow logic (game.js)
 
-    Move the words and phrase functions to wordFuncs.js
+    Do the player guess letter option
+
+    Do the magic letter selection offer
+
+    Consider limit to number of letter guesses
+
+    Do guess word option
+
+    Do Menu Options
+
+    Allow for only two letters left on options display
+
+    Allow for bank is empty in word guess
+    
+Jobs Done
+
+    11/12/2025
+    
+    * Do Initial HTML/CSS
+
+    * Set-up git
+    
+    * Move the words and phrase functions to wordFuncs.js
 
     * Do temp wordList
     
@@ -24,7 +42,8 @@ Jobs Due
 
     * Do phrase blank display
 
-    Display the Bank and Pot and Odds etc.
+    * Display the Bank and Pot and Odds etc.
 
-    Do the initial word bid
-    
+    * Do the initial word bid
+
+    * Do the sage option

@@ -94,7 +94,27 @@
                 <input type="text" id="playerGuessLetter">
                 <p class="statusText">Enter Your Bid</p>
                 <input type="number" id="playerGuessBid">
-                <button class="textButton" id="playerGuessBid">Submit</button>
+                <button class="textButton" id="playerGuessSubmit">Submit</button>
+            </div>
+        </div>
+
+        <div class="row displayRow" id="magicSelectorDiv">
+            <div class="col halfPanel">
+                <img src="assets/images/magicSelector01.png" alt="Magic Selector" width="100%" height="auto">
+            </div>
+            <div class="col halfPanel">
+                <div id="selectorBidDiv">
+                    <p class="statusText">Enter Bid Amount</p>
+                    <input type="number" id="selectorBid">
+                    <button class="textButton" id="selectorBidSubmit">Submit</button>
+                </div>
+                <div id="selectorLetterDiv">
+                    <p class="statusText">Touch the Selector to Choose the Letter</p>
+                    <p>SELECTOR</p>
+                    <table id="selectorTab">
+                        <tr><td id="selectorCell"></td></tr>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -122,6 +142,10 @@
     const sageOpt = document.getElementById("sageOpt");
     const sageSubmit = document.getElementById("sageSubmit");
     const playerOpt = document.getElementById("playerOpt");
+    const playerGuessSubmit = document.getElementById("playerGuessSubmit");
+    const selectorOpt = document.getElementById("selectorOpt");
+    const selectorBidSubmit = document.getElementById("selectorBidSubmit");
+    const selectorCell = document.getElementById("selectorCell");
 
     introDismiss.addEventListener("click", (e) => {
         document.getElementById("introDiv").style.display = "none";
@@ -150,6 +174,22 @@
     playerOpt.addEventListener("click", (e) => {
         game.doPlayerLetterGuessOpt();
     });
+
+    playerGuessSubmit.addEventListener("click", (e) => {
+        game.doPlayerLetterGuess();
+    });
+
+    selectorOpt.addEventListener("click", (e) => {
+        game.doMagicSelectorOpt();
+    });
+
+    selectorBidSubmit.addEventListener("click", (e) => {
+        game.doSelectorBid();
+    });
+
+    selectorCell.addEventListener("click", (e) => {
+        game.doMagicSelection();
+    })
 
 </script>
 </body>

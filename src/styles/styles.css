@@ -151,6 +151,31 @@
     display: none;
 }
 
+/* Magic Selector */
+#magicSelectorDiv {
+    display: none;
+}
+
+#selectorBidDiv {
+    text-align: center;
+}
+
+#selectorLetterDiv {
+    text-align: center;
+}
+
+#selectorTab {
+    margin: 0 auto;
+}
+
+#selectorTab td {
+    border: 2px solid black;
+    width: 28px;
+    height: 28px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
 /* Status Panel */
 #statusPanel {
     text-align: center;

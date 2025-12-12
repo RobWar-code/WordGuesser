@@ -157,6 +157,8 @@ Contents
  
 
 <h1>Schedule
+    Project Start Date: 01/12/2025
+
     Item                       | Est Time (days)   |  Actual |
     ---------------------------|-------------------|---------|
     Extract Word List          |                60 |         |

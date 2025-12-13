@@ -9,7 +9,9 @@ const game = {
     playerGuessMinBid: 10,
     magicSelectorMinBid: 5,
     selectorBidAmount: 0,
+    words: "",
     selectorIntervalId: 0,
+    wordGuessCount: 0,
 
     initialise() {
         this.bankMoney = this.startMoney;
@@ -24,13 +26,13 @@ const game = {
         let words;
         let isPhrase = false;
         if (Math.random() < 0) {
-            words = wordFuncs.selectWord();
+            this.words = wordFuncs.selectWord();
         }
         else {
             isPhrase = true;
-            words = wordFuncs.selectPhrase();
+            this.words = wordFuncs.selectPhrase();
         }
-        wordFuncs.makeWordArray(words)
+        wordFuncs.makeWordArray(this.words)
         wordFuncs.displayWordBlanks();
 
         document.getElementById("initialBidDiv").style.display = "flex";
@@ -265,6 +267,47 @@ const game = {
             document.getElementById("magicSelectorDiv").style.display = "none";
             this.displayMainOptions();
         }, 5000);
+    },
+
+    doWordGuessOpt() {
+        document.getElementById("mainOptionsDiv").style.display = "none";
+        document.getElementById("wordGuessDiv").style.display = "flex";
+    },
+
+    doWordGuess() {
+        // Get the guess and check it
+        let wordGuess = document.getElementById("wordGuess").value;
+        if (wordGuess === "") {
+            this.statusReport("You have not entered any guess");
+            return;
+        }
+        wordGuess = wordGuess.toUpperCase();
+        // Check for invalid characters
+        let invalid = false;
+        for (let c of wordGuess) {
+            if (!(c === " " || (c >= "A" && "Z" >= c))) {
+                invalid = true;
+                break;
+            }
+        }
+        if (invalid) {
+            this.statusReport("Your guess contains invalid characters");
+            return;
+        }
+
+        if (this.words != wordGuess) {
+            this.potMoney = 0;
+            if (this.wordGuessCount >= 1) {
+                if (this.bankMoney > 0) {
+                    this.statusReport("Bad Luck - you have used up your guesses - next word coming up");
+                    wordFuncs.revealWords();
+                    setTimeout(() => {
+                        document.getElementById("wordGuessDiv").style.display = "none";
+                        this.startWord();
+                    }, 5000);
+                }
+            }           
+        }
     },
 
     statusReport(message) {

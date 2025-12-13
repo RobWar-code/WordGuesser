@@ -176,6 +176,11 @@
     font-weight: bold;
 }
 
+/* Word Guess */
+#wordGuessDiv {
+    display: none;
+}
+
 /* Status Panel */
 #statusPanel {
     text-align: center;

@@ -54,6 +54,9 @@
         </div>
         <div class="row displayRow" id="initialBidDiv">
             <div class="col panel" id="initialBidPanel">
+                <div>
+                    <img src="assets/images/wordBid01.png" width="100%" height="auto" alt="Bid Cartoon">
+                </div>
                 <p class="statusText">Enter your bid for the word</p>
                 <label for="initialBid">Bid Amount: </label>
                 <input type="number" name="initialBid" id="initialBid">
@@ -118,6 +121,19 @@
             </div>
         </div>
 
+        <div class="row displayRow" id="wordGuessDiv">
+            <div class="col panel">
+                <div>
+                    <img src="assets/images/wordGuess01.png" width="100%" height="auto" alt="Word Guess">
+                </div>
+                <div>
+                    <p class="statusText">Enter your word/phrase guess - gamble your pot money</p>
+                    <input type="text" id="wordGuess">
+                    <button class="textButton" id="wordGuessSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+
         <div class="row displayRow" id="statusDiv">
             <div class="col panel" id="statusPanel">
                 <p class="statusText" id="statusPara"></p>
@@ -146,6 +162,8 @@
     const selectorOpt = document.getElementById("selectorOpt");
     const selectorBidSubmit = document.getElementById("selectorBidSubmit");
     const selectorCell = document.getElementById("selectorCell");
+    const guessWordOpt = document.getElementById("guessWordOpt");
+    const wordGuessSubmit = document.getElementById("wordGuessSubmit");
 
     introDismiss.addEventListener("click", (e) => {
         document.getElementById("introDiv").style.display = "none";
@@ -189,6 +207,14 @@
 
     selectorCell.addEventListener("click", (e) => {
         game.doMagicSelection();
+    });
+
+    guessWordOpt.addEventListener("click", (e) => {
+        game.doWordGuessOpt();
+    });
+
+    wordGuessSubmit.addEventListener("click", (e) => {
+        game.doWordGuess();
     })
 
 </script>

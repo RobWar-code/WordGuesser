@@ -147,13 +147,25 @@ Contents
     or phrase at the input field.
 
     If the word guessed is incorrect a status message is displayed and
-    the pot is set to zero.
+    the pot is set to zero. Play returns to the continue word function
+    and request for a new bid. 
+
+    If the player has no money left, a status message is displayed and
+    the player is invited to begin again.
+
+    If the player has already had a guess at this word, then the word is 
+    revealed and play returns to the next word.
 
     Otherwise the player is congratulated and the odds are multiplied
     by the pot and paid to the player's bank.
 
     If the player has reached the target in his bank (5000) then he is
     congratulated and offered to start a new game.
+
+    Otherwise play moves to the next word.
+
+    Otherwise play returns to the startWord function.
+
  
 
 <h1>Schedule

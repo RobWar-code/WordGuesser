@@ -249,6 +249,18 @@ const wordFuncs = {
         let oddsPay = Math.round(totalCount / revealedCount) * 2;
         let oddsBet = 1;
         return {oddsPay: oddsPay, oddsBet: oddsBet};
+    },
+
+    revealWords() {
+        let id = 0;
+        for (let w of wordArray) {
+            for (let letterItem of w) {
+                if (!letterItem.revealed) {
+                    document.getElementById(`cell${id}`).innerText = letterItem.letter;
+                }
+                ++id;
+            }
+        }
     }
 
 }

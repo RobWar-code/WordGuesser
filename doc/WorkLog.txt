@@ -10,19 +10,21 @@ Jobs Due
 
     Set-up the game flow logic (game.js)
 
-    Do the player guess letter option
+    Do Menu Options
 
-    Do the magic letter selection offer
+    * Do the player guess letter option
 
-    Consider limit to number of letter guesses
+    * Do the magic letter selection offer
 
     Do guess word option
 
-    Do Menu Options
+    Consider limit to number of letter guesses
 
     Allow for only two letters left on options display
 
     Allow for bank is empty in word guess
+
+    Keep tabs on the words selected and do not choose them again
     
 Jobs Done
 

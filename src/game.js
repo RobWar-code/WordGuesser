@@ -16,14 +16,14 @@ const game = {
     initialise() {
         this.bankMoney = this.startMoney;
         this.potMoney = 0;
-        this.wordGuessOddsPay = 100;
-        this.wordGuessOddsBet = 1;
         wordFuncs.initialise();
     },
 
     startWord() {
+        this.wordGuessOddsPay = 100;
+        this.wordGuessOddsBet = 1;
+        this.wordGuessCount = 0;
         // Select a word or phrase
-        let words;
         let isPhrase = false;
         if (Math.random() < 0) {
             this.words = wordFuncs.selectWord();
@@ -39,6 +39,10 @@ const game = {
 
         // Display the bank details
         this.displayMoney();
+    },
+
+    rebidWord() {
+        document.getElementById("initialBidDiv").style.display = "flex";
     },
 
     displayMoney() {
@@ -189,6 +193,7 @@ const game = {
         }
         this.displayMoney();
         setTimeout(() => {
+            this.statusReport("");
             document.getElementById("playerGuessDiv").style.display = "none";
             this.displayMainOptions();
         }, 5000);
@@ -299,22 +304,66 @@ const game = {
             this.potMoney = 0;
             if (this.wordGuessCount >= 1) {
                 if (this.bankMoney > 0) {
-                    this.statusReport("Bad Luck - you have used up your guesses - next word coming up");
+                    this.statusReport("Bad Luck - you have used up your word guesses - next word coming up");
                     wordFuncs.revealWords();
                     setTimeout(() => {
+                        this.statusReport("");
                         document.getElementById("wordGuessDiv").style.display = "none";
                         this.startWord();
                     }, 5000);
                 }
+                else {
+                    // Last Guess and player broke
+                    this.statusReport("Bad Luck - your last guess and cash");
+                    wordFuncs.revealWords();
+                    setTimeout(() => {  
+                        this.statusReport("");
+                        document.getElementById("wordGuessDiv").style.display = "none";
+                        this.brokeRestart();
+                    }, 5000);
+                }
+            }
+            else {
+                // Guess Remaining
+                if (this.bankMoney > 0) {
+                    this.statusReport("Bad Luck this time - you have one more guess at the word");
+                    setTimeout(() => {
+                        this.statusReport("");
+                        document.getElementById("wordGuessDiv").style.display = "none";
+                        this.rebidWord();
+                    }, 5000);
+                }
+                else {
+                    this.statusReport("Bad Luck - and no money in the bank");
+                    wordFuncs.revealWords();
+                    setTimeout(() => {
+                        this.statusReport("");
+                        document.getElementById("wordGuessDiv").style.display = "none";
+                        this.brokeRestart();
+                    });
+                }
             }           
         }
+        else {
+            // Guess Correct
+            wordFuncs.revealWords();
+            let paymentAmount = this.potMoney * this.wordGuessOddsPay;
+            this.statusReport(`Well Done - Your Guess is Correct - you won ${paymentAmount}`);
+            this.bankMoney += paymentAmount;
+            this.potMoney = 0;
+            setTimeout(() => {
+                this.statusReport("");
+                document.getElementById("wordGuessDiv").style.display = "none";
+                this.startWord();
+            }, 5000);
+
+        }
+        this.displayMoney();
+        this.wordGuessCount += 1;
     },
 
     statusReport(message) {
         document.getElementById("statusPara").innerText = message;
     }
-
-
-
 
 }

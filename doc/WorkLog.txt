@@ -25,6 +25,9 @@ Jobs Due
     Allow for bank is empty in word guess
 
     Keep tabs on the words selected and do not choose them again
+        Limit the words selected array to 500
+
+    Block submit while timeout display in operation
     
 Jobs Done
 

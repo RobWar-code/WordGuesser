@@ -253,7 +253,7 @@ const wordFuncs = {
 
     revealWords() {
         let id = 0;
-        for (let w of wordArray) {
+        for (let w of this.wordArray) {
             for (let letterItem of w) {
                 if (!letterItem.revealed) {
                     document.getElementById(`cell${id}`).innerText = letterItem.letter;

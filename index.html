@@ -66,11 +66,18 @@
 
         <div class="row displayRow" id="mainOptionsDiv">
             <div class="col panel" id="mainOptionPanel">
-                <p class="statusText">Click on option to bid for a letter or the word</p>
+                <p class="statusText">Click on option to bid for a letter or the word/phrase</p>
                 <button class="textButton" id="sageOpt">Pay Sage for Letter (min bid 40)</button><br>
                 <button class="textButton" id="playerOpt">You Guess a Letter (min bid 10)</button><br>
                 <button class="textButton" id="selectorOpt">Use the Magic Selector (min bid 5)</button><br>
                 <button class="textButton" id="guessWordOpt">Guess Word</button>
+            </div>
+        </div>
+
+        <div class="row displayRow" id="guessWordOptOnlyDiv">
+            <div class="col panel" id="mainOptionPanel">
+                <p class="statusText">Less than half of the letters left, so you must now guess the word or phrase</p>
+                <button class="textButton" id="guessWordOpt2">Guess Word</button>
             </div>
         </div>
 
@@ -134,6 +141,16 @@
             </div>
         </div>
 
+        <div class="row displayRow" id="brokeDiv">
+            <div class="col tallHalfPanel">
+                <img src="assets/images/broke.png" width="100%" height="auto" alt="Broke Image">
+            </div>
+            <div class="col tallHalfPanel">
+                <p>Well you've hit skid row - you'll have to ask the rich uncle for a restart</p>
+                <button class="textButton" id="brokeRestart">Restart Game</button>
+            </div>
+        </div>
+
         <div class="row displayRow" id="statusDiv">
             <div class="col panel" id="statusPanel">
                 <p class="statusText" id="statusPara"></p>
@@ -163,7 +180,9 @@
     const selectorBidSubmit = document.getElementById("selectorBidSubmit");
     const selectorCell = document.getElementById("selectorCell");
     const guessWordOpt = document.getElementById("guessWordOpt");
+    const guessWordOpt2 = document.getElementById("guessWordOpt2");
     const wordGuessSubmit = document.getElementById("wordGuessSubmit");
+    const brokeRestart = document.getElementById("brokeRestart");
 
     introDismiss.addEventListener("click", (e) => {
         document.getElementById("introDiv").style.display = "none";
@@ -186,6 +205,7 @@
     });
 
     sageSubmit.addEventListener("click", (e) => {
+        if (game.blockSubmit) return;
         game.doSageBid();
     });
 
@@ -194,6 +214,7 @@
     });
 
     playerGuessSubmit.addEventListener("click", (e) => {
+        if (game.blockSubmit) return;
         game.doPlayerLetterGuess();
     });
 
@@ -202,6 +223,7 @@
     });
 
     selectorBidSubmit.addEventListener("click", (e) => {
+        if (game.blockSubmit) return;
         game.doSelectorBid();
     });
 
@@ -213,9 +235,18 @@
         game.doWordGuessOpt();
     });
 
+    guessWordOpt2.addEventListener("click", (e) => {
+        game.doWordGuessOpt();
+    });
+
     wordGuessSubmit.addEventListener("click", (e) => {
+        if (game.blockSubmit) return;
         game.doWordGuess();
-    })
+    });
+
+    brokeRestart.addEventListener("click", (e) => {
+        game.brokeRestart();
+    });
 
 </script>
 </body>

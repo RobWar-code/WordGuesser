@@ -12,6 +12,8 @@ const game = {
     words: "",
     selectorIntervalId: 0,
     wordGuessCount: 0,
+    blockSubmit: false,
+    remainingLetterMin: 3,
 
     initialise() {
         this.bankMoney = this.startMoney;
@@ -20,9 +22,11 @@ const game = {
     },
 
     startWord() {
+        document.getElementById("wordsDiv").style.display = "flex";
         this.wordGuessOddsPay = 100;
         this.wordGuessOddsBet = 1;
         this.wordGuessCount = 0;
+        wordFuncs.lettersSelected = "";
         // Select a word or phrase
         let isPhrase = false;
         if (Math.random() < 0) {
@@ -39,6 +43,12 @@ const game = {
 
         // Display the bank details
         this.displayMoney();
+    },
+
+    brokeRestart() {
+        document.getElementById("brokeDiv").style.display = "none";
+        this.initialise();
+        this.startWord();
     },
 
     rebidWord() {
@@ -74,7 +84,14 @@ const game = {
     },
 
     displayMainOptions() {
-        document.getElementById("mainOptionsDiv").style.display = "flex";
+        // Check the number of letters unrevealed
+        let remainingLetterCount = wordFuncs.countLettersLeft();
+        if (remainingLetterCount >= wordFuncs.numWordsLetters/2) {
+            document.getElementById("mainOptionsDiv").style.display = "flex";
+        }
+        else {
+            document.getElementById("guessWordOptOnlyDiv").style.display = "flex";
+        }
     },
 
     doSageOpt() {
@@ -125,11 +142,13 @@ const game = {
             this.statusReport(message);
         }
         this.displayMoney();
+        this.blockSubmit = true;
         // Clear the sage display after a time delay
         setTimeout(() => {
             document.getElementById("sageDiv").style.display = "none";
+            this.blockSubmit = false;
             this.displayMainOptions();
-        }, 5000)
+        }, 5000);
     },
 
     doPlayerLetterGuessOpt() {
@@ -192,8 +211,10 @@ const game = {
             this.wordGuessOddsBet = oddsObj.oddsBet;
         }
         this.displayMoney();
+        this.blockSubmit = true;
         setTimeout(() => {
             this.statusReport("");
+            this.blockSubmit = false;
             document.getElementById("playerGuessDiv").style.display = "none";
             this.displayMainOptions();
         }, 5000);
@@ -267,7 +288,9 @@ const game = {
         }
         this.displayMoney();
         clearInterval(this.selectorIntervalId);
+        this.blockSubmit = true;
         setTimeout(() => {
+            this.blockSubmit = false;
             this.statusReport("");
             document.getElementById("magicSelectorDiv").style.display = "none";
             this.displayMainOptions();
@@ -276,6 +299,7 @@ const game = {
 
     doWordGuessOpt() {
         document.getElementById("mainOptionsDiv").style.display = "none";
+        document.getElementById("guessWordOptOnlyDiv").style.display = "none";
         document.getElementById("wordGuessDiv").style.display = "flex";
     },
 
@@ -316,10 +340,12 @@ const game = {
                     // Last Guess and player broke
                     this.statusReport("Bad Luck - your last guess and cash");
                     wordFuncs.revealWords();
+                    this.blockSubmit = true;
                     setTimeout(() => {  
                         this.statusReport("");
+                        this.blockSubmit = false;
                         document.getElementById("wordGuessDiv").style.display = "none";
-                        this.brokeRestart();
+                        this.displayBroke();
                     }, 5000);
                 }
             }
@@ -327,8 +353,10 @@ const game = {
                 // Guess Remaining
                 if (this.bankMoney > 0) {
                     this.statusReport("Bad Luck this time - you have one more guess at the word");
+                    this.blockSubmit = true;
                     setTimeout(() => {
                         this.statusReport("");
+                        this.blockSubmit = false;
                         document.getElementById("wordGuessDiv").style.display = "none";
                         this.rebidWord();
                     }, 5000);
@@ -336,10 +364,12 @@ const game = {
                 else {
                     this.statusReport("Bad Luck - and no money in the bank");
                     wordFuncs.revealWords();
+                    this.blockSubmit = true;
                     setTimeout(() => {
+                        this.blockSubmit = false;
                         this.statusReport("");
                         document.getElementById("wordGuessDiv").style.display = "none";
-                        this.brokeRestart();
+                        this.displayBroke();
                     });
                 }
             }           
@@ -351,7 +381,9 @@ const game = {
             this.statusReport(`Well Done - Your Guess is Correct - you won ${paymentAmount}`);
             this.bankMoney += paymentAmount;
             this.potMoney = 0;
+            this.blockSubmit = true;
             setTimeout(() => {
+                this.blockSubmit = false;
                 this.statusReport("");
                 document.getElementById("wordGuessDiv").style.display = "none";
                 this.startWord();
@@ -360,6 +392,11 @@ const game = {
         }
         this.displayMoney();
         this.wordGuessCount += 1;
+    },
+
+    displayBroke() {
+        document.getElementById("wordsDiv").style.display = "none";
+        document.getElementById("brokeDiv").style.display = "flex";
     },
 
     statusReport(message) {

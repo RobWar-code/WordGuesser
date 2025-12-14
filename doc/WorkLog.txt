@@ -7,27 +7,32 @@ Contents
 Jobs Due
 
     Do Analysis
+ 
+    Do Menu Bar Options
 
-    Set-up the game flow logic (game.js)
+    Do ChatGPT Phrase List
+        Consider adding another 400
 
-    Do Menu Options
+    * Set-up the game flow logic (game.js)
 
     * Do the player guess letter option
 
     * Do the magic letter selection offer
 
-    Do guess word option
+    * Do guess word option
 
-    Consider limit to number of letter guesses
+    * Do Broke Display
 
-    Allow for only two letters left on options display
+    * Allow for bank is empty in word guess
 
-    Allow for bank is empty in word guess
+    * Block submit while timeout display in operation
+
+    * Consider limit to number of letter guesses
+        * Allow for only half letters revealed
 
     Keep tabs on the words selected and do not choose them again
         Limit the words selected array to 500
 
-    Block submit while timeout display in operation
     
 Jobs Done
 

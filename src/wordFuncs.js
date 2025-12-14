@@ -7,11 +7,11 @@ const wordFuncs = {
     lettersSelected: "",
     wordArray: [],
     commonLetters: "ETAISONDRCLMPUGBVFHWKXJZQ",
+    numWordsLetters: 0,
 
     initialise() {
         this.wordsSelected = [];
         this.phrasesSelected = [];
-        this.lettersSelected = []
     },
 
     displayWordBlanks() {
@@ -126,6 +126,7 @@ const wordFuncs = {
             }
             this.wordArray.push(letterArray);
         }
+        this.numWordsLetters = id;
     },
 
     selectWord() {
@@ -261,6 +262,18 @@ const wordFuncs = {
                 ++id;
             }
         }
+    },
+
+    countLettersLeft() {
+        let count = 0;
+        for (let w of this.wordArray) {
+            for (let letterItem of w) {
+                if (!letterItem.revealed) {
+                    ++count;
+                }
+            }
+        }
+        return count;
     }
 
 }

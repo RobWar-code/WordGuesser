@@ -45,6 +45,14 @@
     gap: 0;
 }
 
+.tallHalfPanel {
+    width: 180px;
+    height: 280px;
+    background-color: #ffc0c0;
+    text-align: center;
+    gap: 0;
+}
+
 .panel button, .halfPanel button {
     flex: 0 0 auto;
     align-self: flex-start;
@@ -137,6 +145,10 @@
     display: none;
 }
 
+#guessWordOptOnlyDiv {
+    display: none;
+}
+
 /* Sage Panel */
 #sageDiv {
     display: none;
@@ -184,6 +196,11 @@
 /* Status Panel */
 #statusPanel {
     text-align: center;
+}
+
+/* Broke */
+#brokeDiv {
+    display: none;
 }
 
 /* Money */

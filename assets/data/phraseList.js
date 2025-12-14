@@ -1,4 +1,4 @@
-const phraseList = [
+phraseList = [
   "How are you",
   "Thank you very much",
   "You are welcome",

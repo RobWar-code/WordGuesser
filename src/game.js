@@ -2,7 +2,7 @@ const game = {
     startMoney: 200,
     bankMoney: 0,
     potMoney: 0,
-    winBank: 5000,
+    winBank: 300,
     wordGuessOddsPay: 100,
     wordGuessOddsBet: 1,
     sageMinBid: 40,
@@ -47,6 +47,12 @@ const game = {
 
     brokeRestart() {
         document.getElementById("brokeDiv").style.display = "none";
+        this.initialise();
+        this.startWord();
+    },
+
+    winRestart() {
+        document.getElementById("winGameDiv").style.display = "none";
         this.initialise();
         this.startWord();
     },
@@ -382,12 +388,22 @@ const game = {
             this.bankMoney += paymentAmount;
             this.potMoney = 0;
             this.blockSubmit = true;
-            setTimeout(() => {
-                this.blockSubmit = false;
-                this.statusReport("");
-                document.getElementById("wordGuessDiv").style.display = "none";
-                this.startWord();
-            }, 5000);
+            if (this.bankMoney < this.winBank) {
+                setTimeout(() => {
+                    this.blockSubmit = false;
+                    this.statusReport("");
+                    document.getElementById("wordGuessDiv").style.display = "none";
+                    this.startWord();
+                }, 5000);
+            }
+            else {
+                setTimeout(() => {
+                    this.blockSubmit = false;
+                    this.statusReport("");
+                    document.getElementById("wordGuessDiv").style.display = "none";
+                    this.displayWin();
+                }, 5000);
+            }
 
         }
         this.displayMoney();
@@ -397,6 +413,11 @@ const game = {
     displayBroke() {
         document.getElementById("wordsDiv").style.display = "none";
         document.getElementById("brokeDiv").style.display = "flex";
+    },
+
+    displayWin() {
+        document.getElementById("wordsDiv").style.display = "none";
+        document.getElementById("winGameDiv").style.display = "flex";
     },
 
     statusReport(message) {

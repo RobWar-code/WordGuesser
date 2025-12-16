@@ -203,6 +203,11 @@
     display: none;
 }
 
+/* Win Game */
+#winGameDiv {
+    display: none;
+}
+
 /* Money */
 #moneyDiv {
     text-align: center;

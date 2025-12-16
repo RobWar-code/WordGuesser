@@ -151,6 +151,16 @@
             </div>
         </div>
 
+        <div class="row displayRow" id="winGameDiv">
+            <div class="col tallHalfPanel">
+                <img src="assets/images/winGame.png" width="100%" height="auto" alt="Winner Image">
+            </div>
+            <div class="col tallHalfPanel">
+                <p>Congratulations - you hit the big time and won the game - play again?</p>
+                <button class="textButton" id="winRestart">Restart Game</button>
+            </div>
+        </div>
+
         <div class="row displayRow" id="statusDiv">
             <div class="col panel" id="statusPanel">
                 <p class="statusText" id="statusPara"></p>
@@ -183,6 +193,7 @@
     const guessWordOpt2 = document.getElementById("guessWordOpt2");
     const wordGuessSubmit = document.getElementById("wordGuessSubmit");
     const brokeRestart = document.getElementById("brokeRestart");
+    const winRestart = document.getElementById("winRestart");
 
     introDismiss.addEventListener("click", (e) => {
         document.getElementById("introDiv").style.display = "none";
@@ -246,6 +257,10 @@
 
     brokeRestart.addEventListener("click", (e) => {
         game.brokeRestart();
+    });
+
+    winRestart.addEventListener("click", (e) => {
+        game.winRestart();
     });
 
 </script>

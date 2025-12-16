@@ -155,6 +155,7 @@ const wordFuncs = {
             ++count;
         }
         this.wordsSelected.push(word);
+        if (this.wordsSelected.length >= 500) this.wordsSelected = [];
         return word.toUpperCase();
     },
 
@@ -195,6 +196,7 @@ const wordFuncs = {
             ++count;
         }
         this.phrasesSelected.push(phrase);
+        if (this.phrasesSelected.length > 500) this.phrasesSelected = [];
         return phrase.toUpperCase();
     },
 

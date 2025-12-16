@@ -13,6 +13,23 @@ Jobs Due
     Do ChatGPT Phrase List
         Consider adding another 400
 
+    Continue with word selection
+        Remove difficult words from A 
+
+    Test on mobile - inputs
+    
+    * Add phrasesD.json to phraseList.js sort and de-duplicate.
+
+    * Do win condition
+
+    * Keep tabs on the words selected and do not choose them again
+        * Limit the words selected array to 500
+
+
+Jobs Done
+
+    14/12/2025
+    
     * Set-up the game flow logic (game.js)
 
     * Do the player guess letter option
@@ -29,12 +46,6 @@ Jobs Due
 
     * Consider limit to number of letter guesses
         * Allow for only half letters revealed
-
-    Keep tabs on the words selected and do not choose them again
-        Limit the words selected array to 500
-
-    
-Jobs Done
 
     11/12/2025
     

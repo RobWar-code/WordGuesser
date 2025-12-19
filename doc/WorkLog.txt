@@ -10,15 +10,14 @@ Jobs Due
  
     Do Menu Bar Options
 
-    Do ChatGPT Phrase List
-        Consider adding another 400
 
     Continue with word selection
         Remove difficult words from A 
 
     Test on mobile - inputs
     
-    * Add phrasesD.json to phraseList.js sort and de-duplicate.
+    * Do ChatGPT Phrase List
+        * Add phrasesD.json to phraseList.js sort and de-duplicate.
 
     * Do win condition
 

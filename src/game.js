@@ -2,7 +2,7 @@ const game = {
     startMoney: 200,
     bankMoney: 0,
     potMoney: 0,
-    winBank: 300,
+    winBank: 5000,
     wordGuessOddsPay: 100,
     wordGuessOddsBet: 1,
     sageMinBid: 40,
@@ -29,7 +29,7 @@ const game = {
         wordFuncs.lettersSelected = "";
         // Select a word or phrase
         let isPhrase = false;
-        if (Math.random() < 0) {
+        if (Math.random() < 0.66) {
             this.words = wordFuncs.selectWord();
         }
         else {

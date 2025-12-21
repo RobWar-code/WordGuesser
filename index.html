@@ -14,7 +14,7 @@
     <table id="menuTable">
         <tr id="menuRow">
             <td id="menuLogoCell">
-                <img src="assets/images/mainLogo.png" width="64" height="32">
+                <img src="assets/images/mainLogo.png" width="118" height="48">
             </td>
             <td id="menuTitleCell">WordGuesser</td>
             <td id="menuOptionsCell">
@@ -180,6 +180,8 @@
 
 <script>
     let gameStarted = false;
+    const introBtn = document.getElementById("introBtn");
+    const homeBtn = document.getElementById("homeBtn");
     const introDismiss = document.getElementById("introDismiss");
     const initialBidSubmit = document.getElementById("initialBidSubmit");
     const sageOpt = document.getElementById("sageOpt");
@@ -194,6 +196,15 @@
     const wordGuessSubmit = document.getElementById("wordGuessSubmit");
     const brokeRestart = document.getElementById("brokeRestart");
     const winRestart = document.getElementById("winRestart");
+
+    introBtn.addEventListener("click", (e) => {
+        document.getElementById("introDiv").style.display = "block";
+        document.getElementById("gameContentDiv").style.display = "none";
+    });
+
+    homeBtn.addEventListener("click", (e) => {
+        window.location = '../index.html';
+    });
 
     introDismiss.addEventListener("click", (e) => {
         document.getElementById("introDiv").style.display = "none";

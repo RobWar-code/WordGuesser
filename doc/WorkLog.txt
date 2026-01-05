@@ -14,8 +14,15 @@ Jobs Due
     Continue with word selection
         Remove difficult words from A 
 
+
     Test on mobile - inputs
     
+    * Text centering on player options panel
+
+    * Text centering on guess word panel
+
+    * Adjust max word length to 12
+
     * Do ChatGPT Phrase List
         * Add phrasesD.json to phraseList.js sort and de-duplicate.
 

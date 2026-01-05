@@ -1,6 +1,6 @@
 const wordFuncs = {
     minWordLength: 6,
-    maxWordLength: 14,
+    maxWordLength: 12,
     maxPhraseWords: 5,
     wordsSelected: [],
     phrasesSelected: [],

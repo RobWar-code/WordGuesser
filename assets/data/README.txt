@@ -48,3 +48,5 @@ The WordGuesser Word and PhraseLists
 <h1>Possible Future Work 
     Possibly merge selected words from interimWordList.txt back into the
     wordsEdited.txt word list, for future use.
+
+    Allow for the marked word list ending at "onloading".

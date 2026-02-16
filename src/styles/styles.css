@@ -15,6 +15,7 @@
 /* General */
 
 .textButton {
+    margin-top: 3px;
     padding: 3px;
     background-color: #a0f0a0;
     border: 2px solid #604040

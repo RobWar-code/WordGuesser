@@ -1,0 +1,58 @@
+Systems Tests
+
+Check that the opening panel Dismiss button reveals the word bid view
+* Enter Invalid word bid amounts, check that an appropriate message is displayed
+* Enter a valid amount. Ensure that that the pot is set to the amount and that the
+    bank is decreased by that amount.
+* Ensure that word/phrase blanks are displayed, ensure that the main guess options
+    are displayed
+* Click the Pay Sage for Letter option. Ensure that the sage bid amount panel is displayed.
+* Enter invalid bid amounts - ensure that appropriate messages are displayed.
+* Enter a valid bid amount - repeat to see appropriate messages for good and bad guesses.
+* Ensure the letter is display is updated.
+* Ensure that main menu is displayed after each guess.
+* Continue to use the sage until insufficient funds
+* Ensure that the insufficient funds message is displayed
+* Choose the You Guess a Letter option - Ensure that the player letter guess panel is displayed
+* Ensure the status message is clear before entry
+* Enter an invalid bid amount in the player letter guess. Ensure appropriate message displayed.
+* Enter invalid characters - ensure appropriate messages displayed
+* Enter valid bid and letter - repeat to see message for good and bad guesses.
+* Ensure the letter display is updated.
+* Try the guess word option - Ensure that the guess word panel is displayed.
+* Try for a correct word
+    * Ensure that the appropriate message is displayed
+    * Ensure that the main word bid option is displayed with a new word/phrase
+* Enter the new word bid
+* Choose the Use Magic Selector option - ensure that the magic selector panel is displayed
+* Enter invalid bid amounts - ensure that appropriate messages are displayed
+* Enter valid bid amount
+* Ensure that the letter selector appears with auto letter choices
+* Touch the auto selector to check for present and non-present letters
+* Ensure that appropriate messages are displayed
+* Ensure that the tile display is updated appropriately
+* Use the You Guess a Letter option until half the characters of the word are set
+* Choose the Guess Word option
+* Make an incorrect word guess - ensure that an appropriate message appears 
+* Ensure that bid amount for a second guess appears enter invalid amounts
+* Ensure that appropriate messages are displayed
+* Ensure that guess word only option appears
+* Select the Guess Word option
+* Ensure that guess word panel appears
+* Make a correct guess
+* Ensure that message appears
+* Ensure that display is returned to word bid panel with a new blank word/phrase
+* Ensure that the pot is set to 0 and the bank updated with the win
+* Use the You Guess Letter Option until all money used up 
+* Use the Guess Word option for an incorrect guess
+* Ensure that the broke display appears with the restart game option
+* Click the restart game option
+* Ensure that word bid amount panel is displayed with the bank set to 200 and the pot to 0
+* Play to Win - ensure that winner panel is displayed.
+* Ensure the restart game option appears
+* Click the Restart Game button
+* Ensure the bank is restored to 200 and the pot to 0
+* Ensure that the word bid option appears
+
+Load the game on the net and test with a mobile.
+

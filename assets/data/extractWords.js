@@ -1,13 +1,14 @@
-const fs = require('fs/promises');
+const fs = require('fs');
 
-async function processWordList() {
+function processWordList() {
+
     // Get the input and output file names
     const args = process.argv.slice(2);
     const inputFile = args[0];
     const outputFile = args[1];
 
     // Read in the input file
-    let inputString = await fs.readFile(inputFile, 'utf8');
+    let inputString = fs.readFileSync(inputFile, 'utf8');
 
     // Split into a word array
     let wordSource = inputString.split('\n');
@@ -23,10 +24,9 @@ async function processWordList() {
     }
 
     // Output the selected words as json
-    wordsJson = JSON.stringify(wordsSelected, null, 2);
+    let wordsJson = JSON.stringify(wordsSelected, null, 2);
 
-    fs.writeFile(outputFile, wordsJson, (err) => {if (err) throw err;});
-    
+    fs.writeFileSync(outputFile, wordsJson);
 }
 
 processWordList();

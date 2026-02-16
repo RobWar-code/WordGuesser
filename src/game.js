@@ -164,6 +164,7 @@ const game = {
         }
         document.getElementById("mainOptionsDiv").style.display = "none";
         document.getElementById("playerGuessDiv").style.display = "flex";
+        this.statusReport("");
     },
 
     doPlayerLetterGuess() {
@@ -236,6 +237,7 @@ const game = {
         document.getElementById("magicSelectorDiv").style.display = "flex";
         document.getElementById("selectorBidDiv").style.display = "block";
         document.getElementById("selectorLetterDiv").style.display = "none";
+        this.statusReport("");
     },
 
     doSelectorBid() {

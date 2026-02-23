@@ -342,7 +342,7 @@ const game = {
                         this.statusReport("");
                         document.getElementById("wordGuessDiv").style.display = "none";
                         this.startWord();
-                    }, 5000);
+                    }, 10000);
                 }
                 else {
                     // Last Guess and player broke
@@ -354,7 +354,7 @@ const game = {
                         this.blockSubmit = false;
                         document.getElementById("wordGuessDiv").style.display = "none";
                         this.displayBroke();
-                    }, 5000);
+                    }, 10000);
                 }
             }
             else {

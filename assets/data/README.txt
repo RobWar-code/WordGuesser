@@ -4,7 +4,7 @@ The WordGuesser Word and PhraseLists
         Introduction
         Derivation of the Phrase List
         Derivation of the Word List   
-        Possible Future Work  
+        Remerging the Lists  
 
 <h1>Introduction
     The lists used by the game are javascript objects - phraseList.js and wordList.js.
@@ -45,8 +45,13 @@ The WordGuesser Word and PhraseLists
     to provide a source for the program extractWords.js to produce the final
     wordList.js object.
 
-<h1>Possible Future Work 
-    Possibly merge selected words from interimWordList.txt back into the
+<h1>Remerging the Lists
+    Merge selected words from interimWordList.txt back into the
     wordsEdited.txt word list, for future use.
 
-    Allow for the marked word list ending at "onloading".
+    Allow for the original marked word list ending at "onloading".
+
+    The purpose of the new marked list WordsEdited2.txt is to serve
+    as the source for Khi, in which some words are elided.
+
+    The utility for doing the merge is mergeInterim.js.

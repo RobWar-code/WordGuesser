@@ -2,6 +2,13 @@ const fs = require('fs');
 
 const mergeFuncs = {
 
+    /**
+     * Merge the newly marked words from the interim file back
+     * into the original edit list, to produce a new output files
+     * arg1 - eidt file
+     * arg2 - interim file
+     * arg3 - output file
+     */
     mergeLists() {
         // Get arguments
         const args = process.argv.slice(2);
